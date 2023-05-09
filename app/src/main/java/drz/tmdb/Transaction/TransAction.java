@@ -10,6 +10,7 @@ import android.os.Bundle;
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.parser.CCJSqlParserUtil;
 import net.sf.jsqlparser.statement.Statement;
+import net.sf.jsqlparser.statement.create.deputyclass.CreateTJoinDeputyClass;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 //import drz.tmdb.Level.LevelManager;
+import drz.tmdb.Transaction.Transactions.impl.CreateTJoinDeputyClassImpl;
 import drz.tmdb.level.LevelManager;
 import drz.tmdb.Log.*;
 import drz.tmdb.memory.*;
@@ -215,6 +217,12 @@ public class TransAction {
                     Create create =new CreateImpl(memConnect);
                     if(create.create(stmt)) new AlertDialog.Builder(context).setTitle("提示").setMessage("创建成功").setPositiveButton("确定",null).show();
                     else new AlertDialog.Builder(context).setTitle("提示").setMessage("创建失败").setPositiveButton("确定",null).show();
+                    break;
+                case "CreateTJoinDeputyClass":
+                    CreateTJoinDeputyClassImpl createTJoinDeputyClass = new CreateTJoinDeputyClassImpl(memConnect);
+                    if(createTJoinDeputyClass.createTJoinDeputyClass(stmt)){
+                        new AlertDialog.Builder(context).setTitle("提示").setMessage("创建成功").setPositiveButton("确定",null).show();
+                    }
                     break;
                 case "CreateDeputyClass":
 //                    switch
